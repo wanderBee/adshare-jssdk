@@ -1,9 +1,10 @@
 {
-  "name": "advertise-push",
-  "version": "1.0.0",
-  "description": "广告推送",
+  "name": "adshare-jssdk",
+  "version": "0.1.1",
+  "description": "广告分发",
   "main": "dist/launchAd.js",
   "scripts": {
+    "clean": "rm -rf dist",
     "build": "rollup -c"
   },
   "repository": {
@@ -11,7 +12,8 @@
     "url": "git+https://github.com/wanderBee/adshare-jssdk"
   },
   "keywords": [
-    "ad"
+    "ad",
+    "广告分发"
   ],
   "author": "pengfei.wang",
   "license": "MIT",

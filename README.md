@@ -1,119 +1,55 @@
-# resume-maker
+# adshare-jssdk
 
-[![NPM Version](https://img.shields.io/npm/v/resume-maker.svg)](https://www.npmjs.com/package/resume-maker)
+[![NPM Version](https://img.shields.io/npm/v/adshare-jssdk.svg)](https://www.npmjs.com/package/adshare-jssdk)
 
-[![NPM Badge](https://nodei.co/npm/resume-maker.png?downloads=true)](https://www.npmjs.com/package/resume-maker)
-
-![Alt text](https://drive.google.com/uc?export=view&id=0B3XkfYbZArSfdTc4ZVV4X0V0UGc)
+[![NPM Badge](https://nodei.co/npm/adshare-jssdk.png?downloads=true)](https://www.npmjs.com/package/adshare-jssdk)
 
 ## Install
 
 ```bash
-$ git clone https://github.com/u4bi-dev/resume-maker.git resume
+$ git clone https://github.com/wanderBee/adshare-jssdk
 ```
 
 ```bash
-$ npm install
+$ yarn
 ```
 
 ## build
 
 ```bash
-$ npm run build
+$ yarn build
 ```
 
-##### resume.js
+## Load
+
+### HTML
 
 ```html
-<script src="https://cdn.rawgit.com/u4bi-dev/resume-maker/master/dist/resume.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/adshare-jssdk@0.1.0/dist/launchAd.min.js"></script>
 ```
+
+### ES6
+
+```js
+import LaunchAd from "adshare-jssdk";
+```
+
+## usage
+
 ```javascript
-var resume = new Resume(element);
-resume.render(data); // HTTP Link , JSON Object, JSON String
-```
+/**
+ * 初始化initConfig 尽量保证被最先加载
+ * 比如 html 引入，可放到 </head> 上方
+ */
+LaunchAd.initConfig({
+  noIframe: false // 是否跳出iframe，true则跳出；默认为false 页面被嵌入到iframe中
+});
 
-##### JSON Rule
-```json
-{
-    "header" : {
-        "avatar" : "https://avatars3.githubusercontent.com/u/21367010?v=4&s=460",
-        "name": "Myungjae Yu",
-        "job" : "Frontend Developer",
-        "bio" : "This is the executive summary.",
-        "email" : "u4bi@daum.net",
-        "icon" : {
-            "github"    : "https://github.com/u4bi",
-            "linkdin"   : "https://github.com/u4bi",
-            "facebook"  : "https://github.com/u4bi",
-            "instagram" : "https://github.com/u4bi",
-            "twitter"   : "https://github.com/u4bi",
-            "website"   : "https://github.com/u4bi"
-        }
-    },
-    "projects" : [
-        {
-            "name" : "Test Project 1",
-            "link" : "https://github.com/u4bi",
-            "date" : {
-                "start" : "2017/09/06",
-                "end"   : "2017/09/07"
-            },
-            "bio" : "Test Web Project"
-        }
-    ],
-    "skills" : [
-        { 
-            "title" : "Programming Languages",
-            "entry" : [
-                "Test Languages 1",
-                "Test Languages 2"
-            ]
-        }
-    ],
-    "experience" : [
-        {
-            "name" : "Test Company 1",
-            "link" : "https://github.com/u4bi",
-            "job"  : "Frontend Developer",
-            "date" : {
-                "start" : "2017/09/06",
-                "end"   : "2017/09/07"
-            },
-            "address" : "Yeoksam, Seoul",
-            "bios" : [
-                "Test Comment 1",
-                "Test Comment 2"
-            ]
-        }
-    ],
-    "eduandcert" : {
-        "edu" : [
-            {
-                "title" : "Test College",
-                "link" : "https://github.com/u4bi",
-                "name"  : "Test lang",
-                "date" : {
-                    "start" : "2017/09/06",
-                    "end" : "2017/09/07"
-                }
-            }
-            
-        ],
-        "cert" : [
-            {
-                "title" : "Test Campus",
-                "link" : "https://github.com/u4bi",
-                "name" : "Test lang",
-                "date" : "2017/09/07"
-            }
-            
-        ]
-    },
-    "footer" : {
-        "live" : false
-    }
-}
-
+/* 转化收益上报 */
+LaunchAd.report({
+  actionId: "", // 转化ID [在dsp平台配置]
+  phone: "" // 转化手机号
+});
 ```
 
 ## License
