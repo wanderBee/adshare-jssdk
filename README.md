@@ -36,6 +36,12 @@ import LaunchAd from "adshare-jssdk";
 
 ## usage
 
+> prepare
+
+login in [dsp platform](http://jiuzhang.cnlaunch.com/dsp) for advertising settings
+
+> in your file
+
 ```javascript
 /**
  * 初始化initConfig 尽量保证被最先加载
@@ -45,10 +51,16 @@ LaunchAd.initConfig({
   noIframe: false // 是否跳出iframe，true则跳出；默认为false 页面被嵌入到iframe中
 });
 
-/* 转化收益上报 */
+/**
+ * 转化收益上报
+ * @param uuid [String][必传] 分发用户标识
+ * @param phone [String][必传] 转化手机号
+ * @param actionId [String][非必传] // 转化ID （dsp platform配置）
+ */
 LaunchAd.report({
-  actionId: "", // 转化ID [在dsp平台配置]
-  phone: "" // 转化手机号
+  uuid: "",
+  actionId: "",
+  phone: ""
 });
 ```
 
