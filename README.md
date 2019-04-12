@@ -25,7 +25,7 @@ $ yarn build
 ### HTML
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/adshare-jssdk@0.1.0/dist/launchAd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/adshare-jssdk@0.2.4/dist/launchAd.min.js"></script>
 ```
 
 ### ES6

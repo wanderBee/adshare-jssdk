@@ -1,6 +1,6 @@
 {
   "name": "adshare-jssdk",
-  "version": "0.2.2",
+  "version": "0.2.4",
   "description": "广告分发",
   "main": "dist/launchAd.js",
   "scripts": {
