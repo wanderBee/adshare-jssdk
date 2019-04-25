@@ -19,16 +19,25 @@ function getQueryString(name, loc) {
 }
 
 import { convertReport } from "./Report";
+import loadScript from "./util/loadScript";
+
 export class Ad {
   isDevelop: Boolean;
   noIframe: Boolean;
+  async: Boolean;
 
   constructor() {}
 
   // 初始化参数
   initConfig(options): void {
     this.isDevelop = options.isDevelop || false;
+    if(this.isDevelop){
+      loadScript('https://share.instago.com.cn/adshare/vconsole.min.js', ()=>{
+        var vconsole = new VConsole();
+      })
+    }
     this.noIframe = options.noIframe || false;
+    this.async = options.async;
     if (this.noIframe && window.top != window.self) {
       let self_origin = window.self.location.origin;
       let self_pathname = window.self.location.pathname;
@@ -59,6 +68,7 @@ export class Ad {
     }
     convertReport({
       isDevelop: this.isDevelop,
+      async: this.async,
       uuid,
       actionId,
       phone

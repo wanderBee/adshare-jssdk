@@ -1,6 +1,6 @@
 {
   "name": "adshare-jssdk",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "广告分发",
   "main": "dist/launchAd.js",
   "scripts": {
@@ -24,5 +24,8 @@
   "devDependencies": {
     "rollup": "^0.49.2",
     "rollup-plugin-typescript": "^0.8.1"
+  },
+  "dependencies": {
+    "vconsole": "^3.3.0"
   }
 }

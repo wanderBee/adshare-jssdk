@@ -84,6 +84,7 @@ function request(options) {
     xhr.send(data);
     function callback() {
         if (xhr.readyState == 4) {
+            console.log("adshare-jssdk>>> request url: " + url + " , response: " + xhr.responseText);
             if (type == "json") {
                 try {
                     success.call(null, JSON.parse(xhr.responseText));
@@ -142,13 +143,32 @@ function convertReport(option) {
     if (option.uuid) {
         params["uuid"] = option.uuid;
     }
+    console.log('adshare-jssdk>>> 开始执行数据上报...', params);
     return request({
         isDevelop: option.isDevelop,
+        async: option.async,
         url: "v1/adshare/convert",
         method: "post",
         params: params,
         success: function () { }
     });
+}
+
+function loadScript(url, callback) {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    if (script.readyState) {
+        script.onreadystatechange = function () {
+            if (script.readyState == 'loaded' || script.readyState == 'complete') {
+                script.onreadystatechange = null;
+                callback();
+            }
+        };
+    }
+    else
+        script.onload = function () { return callback(); };
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
 }
 
 /**
@@ -179,7 +199,13 @@ var Ad = (function () {
     // 初始化参数
     Ad.prototype.initConfig = function (options) {
         this.isDevelop = options.isDevelop || false;
+        if (this.isDevelop) {
+            loadScript('https://share.instago.com.cn/adshare/vconsole.min.js', function () {
+                var vconsole = new VConsole();
+            });
+        }
         this.noIframe = options.noIframe || false;
+        this.async = options.async;
         if (this.noIframe && window.top != window.self) {
             var self_origin = window.self.location.origin;
             var self_pathname = window.self.location.pathname;
@@ -210,6 +236,7 @@ var Ad = (function () {
         }
         convertReport({
             isDevelop: this.isDevelop,
+            async: this.async,
             uuid,
             actionId,
             phone

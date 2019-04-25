@@ -77,6 +77,7 @@ function request(options) {
 
   function callback() {
     if (xhr.readyState == 4) {
+      console.log(`adshare-jssdk>>> request url: ${url} , response: ${xhr.responseText}`);
       if (type == "json") {
         try {
           success.call(null, JSON.parse(xhr.responseText));

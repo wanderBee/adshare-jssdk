@@ -25,7 +25,7 @@ $ yarn build
 ### HTML
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/adshare-jssdk@0.2.4/dist/launchAd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/adshare-jssdk@0.2.7/dist/launchAd.min.js"></script>
 ```
 
 ### ES6
@@ -38,7 +38,7 @@ import LaunchAd from "adshare-jssdk";
 
 > prepare
 
-login in [dsp platform](http://jiuzhang.cnlaunch.com/dsp) for advertising settings
+login in [dsp platform](http://adbc8.instago.com.cn/dsp/) for advertising settings
 
 > in your file
 
@@ -48,6 +48,7 @@ login in [dsp platform](http://jiuzhang.cnlaunch.com/dsp) for advertising settin
  * 比如 html 引入，可放到 </head> 上方
  */
 LaunchAd.initConfig({
+  async: true  // 是否异步执行js api
   noIframe: false // 是否跳出iframe，true则跳出；默认为false 页面被嵌入到iframe中
 });
 

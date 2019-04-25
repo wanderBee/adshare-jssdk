@@ -14,8 +14,10 @@ export function convertReport(option) {
   if (option.uuid) {
     params["uuid"] = option.uuid;
   }
+  console.log('adshare-jssdk>>> 开始执行数据上报...', params);
   return request({
     isDevelop: option.isDevelop,
+    async: option.async,
     url: `v1/adshare/convert`,
     method: "post",
     params: params,
