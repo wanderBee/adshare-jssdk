@@ -1,11 +1,12 @@
 {
   "name": "adshare-jssdk",
-  "version": "0.2.7",
+  "version": "0.3.1",
   "description": "广告分发",
   "main": "dist/launchAd.js",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "start": "yarn clean & yarn build"
   },
   "repository": {
     "type": "git",
